@@ -12,7 +12,7 @@ export const createProgram = async (req, res) => {
 };
 
 //GET
-export const getProgram = async (req, res) => {
+export const getPrograms = async (req, res) => {
   try {
     const programs = await Program.find();
     res.status(200).json(subjects);

@@ -1,6 +1,6 @@
-import Stream from "../models/stream.model.js";
+import Stream from "../../models/admin/stream.model.js";
 
-export const createStreamName = async (req, res) => {
+export const createStream = async (req, res) => {
   try {
     const stream = new Stream(req.body);
     await stream.save();
@@ -10,7 +10,7 @@ export const createStreamName = async (req, res) => {
   }
 };
 
-export const getStream = async (req, res) => {
+export const getStreams = async (req, res) => {
   try {
     const streams = await Stream.find();
     res.json(models);

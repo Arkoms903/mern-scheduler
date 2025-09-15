@@ -1,6 +1,6 @@
-import ClassSettings from "../models/classSettings.model.js";
+import ClassSettings from "../../models/admin/classSettings.model.js";
 
-export const createclassSettings = async (req, res) => {
+export const createClassSettings = async (req, res) => {
   try {
     const info = new ClassSettings(req.body);
     await info.save();
@@ -10,7 +10,7 @@ export const createclassSettings = async (req, res) => {
   }
 };
 
-export const getclassSettings = async (req, res) => {
+export const getClassSettings = async (req, res) => {
   try {
     const infos = await ClassSettings.find();
     res.json(infos);
@@ -19,7 +19,7 @@ export const getclassSettings = async (req, res) => {
   }
 };
 
-export const getclassSettingsById = async (req, res) => {
+export const getClassSettingsById = async (req, res) => {
   try {
     const info = await ClassSettings.findById(req.params.id);
     if (!info) return res.status(404).json({ message: "Not found" });
@@ -29,7 +29,7 @@ export const getclassSettingsById = async (req, res) => {
   }
 };
 
-export const updateStream = async (req, res) => {
+export const updateClassSettings = async (req, res) => {
   try {
     const info = await Stream.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!info) return res.status(404).json({ message: "Not found" });
@@ -39,7 +39,7 @@ export const updateStream = async (req, res) => {
   }
 };
 
-export const deleteStream = async (req, res) => {
+export const deleteClassSettings = async (req, res) => {
   try {
     const info = await Stream.findByIdAndDelete(req.params.id);
     if (!info) return res.status(404).json({ message: "Not found" });

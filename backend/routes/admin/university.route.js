@@ -6,7 +6,7 @@ import {
   getUniversityById,
   updateUniversity,
   deleteUniversity,
-} from "@/controllers/admin/university.controller.js";
+} from "../../controllers/admin/university.controller.js";
 
 const router = express.Router();
 

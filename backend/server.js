@@ -4,10 +4,10 @@ import connectDB from "./lib/db.js";
 
 import subjectRoutes from "./routes/admin/subjects.route.js";
 import programRoutes from "./routes/admin/program.routes.js";
-import sectionRoutes from "./routes/admin/section.routes.js";
-import streamRoutes from "./routes/admin/stream.routes.js";
-import classSettingsRoutes from "./routes/admin/classSettings.routes.js";
-import universityRoutes from "./routes/admin/university.routes.js";
+import sectionRoutes from "./routes/admin/section.route.js";
+import streamRoutes from "./routes/admin/stream.route.js";
+import classSettingsRoutes from "./routes/admin/classSettings.route.js";
+import universityRoutes from "./routes/admin/university.route.js";
 
 dotenv.config();
 connectDB();
