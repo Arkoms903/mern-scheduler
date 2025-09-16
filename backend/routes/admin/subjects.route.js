@@ -5,7 +5,7 @@ import {
   getSubjectById,
   updateSubject,
   deleteSubject,
-} from '../../controllers/admin/subjects.controller';
+} from '../../controllers/admin/subjects.controller.js';
 
 const router = express.Router();
 

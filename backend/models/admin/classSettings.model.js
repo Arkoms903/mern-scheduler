@@ -13,5 +13,5 @@ const classSettingsSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const ClassSettings = mongoose.Model('ClassSettings', classSettingsSchema);
+const ClassSettings = mongoose.model('ClassSettings', classSettingsSchema);
 export default ClassSettings;

@@ -1,4 +1,4 @@
-import University from "../models/university.model.js";
+import University from "../../models/admin/university.model.js";
 
 export const createUniversity = async (req, res) => {
   try {
@@ -10,7 +10,7 @@ export const createUniversity = async (req, res) => {
   }
 };
 
-export const getUniversity = async (req, res) => {
+export const getUniversities = async (req, res) => {
   try {
     const university= await University.find();
     res.json(university);
