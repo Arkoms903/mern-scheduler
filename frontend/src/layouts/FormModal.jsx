@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import axios from 'axios';
-
+// const url=import.meta.env.BASE_URL
 export default function FormModal({ model, data, onClose, refresh }) {
   const [formData, setFormData] = useState({
     name: '',
@@ -26,9 +26,11 @@ export default function FormModal({ model, data, onClose, refresh }) {
   useEffect(() => {
     const fetchUniversities = async () => {
       try {
-        const res = await axios.get('/api/universities');
-        const uniArray = Array.isArray(res.data) ? res.data : res.data.data;
-        setUniversities(uniArray || []);
+        const res = await axios.get(`${import.meta.env.VITE_BASE_URL}/api/v1/university/getUni`);
+       
+        console.log(res);
+        
+       setUniversities(res.data||[])
       } catch (err) {
         console.error('Failed to fetch universities:', err);
         setUniversities([]);
@@ -47,10 +49,14 @@ export default function FormModal({ model, data, onClose, refresh }) {
     try {
       if (data?._id) {
         // Edit existing
-        await axios.put(`/api/programs/${data._id}`, formData);
+        console.log(data._id);
+        
+        await axios.put(`${import.meta.env.VITE_BASE_URL}/api/v1/programs/${data._id}`, formData);
+        
+        
       } else {
         // Add new
-        await axios.post(`/api/programs`, formData);
+        await axios.post(`${import.meta.env.VITE_BASE_URL}/api/v1/programs/createProgram`, formData);
       }
       refresh(); // refresh table
       onClose(); // close modal

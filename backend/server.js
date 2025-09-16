@@ -23,7 +23,7 @@ app.use("/api/v1/programs", programRoutes);
 app.use("/api/v1/sections", sectionRoutes);
 app.use("/api/v1/streams", streamRoutes);
 app.use("/api/v1/classSettings", classSettingsRoutes);
-app.use("/api/v1/universiy", universityRoutes);
+app.use("/api/v1/university", universityRoutes);
 app.use("/api/v1/auth",authroutes);
 
 const PORT = process.env.PORT;

@@ -18,10 +18,10 @@ export default function Table({ columns, data, onEdit, onDelete }) {
       </thead>
       <tbody>
         {tableData.length === 0 ? (
-          <tr>
+          <tr className='text-left'>
             <td
               colSpan={columns.length + 1}
-              className="text-center px-4 py-6 text-gray-500"
+              className="text-center px-5 py-4 text-gray-500"
             >
               No data available
             </td>
@@ -36,12 +36,12 @@ export default function Table({ columns, data, onEdit, onDelete }) {
                     ? value.name || JSON.stringify(value)
                     : value || 'N/A';
                 return (
-                  <td key={col} className="px-4 py-2">
+                  <td key={col} className="px-5 py-4">
                     {displayValue}
                   </td>
                 );
               })}
-              <td className="px-4 py-2 flex gap-2">
+              <td className="px-3 py-4 flex gap-4">
                 <Button size="sm" variant="outline" onClick={() => onEdit(row)}>
                   Edit
                 </Button>

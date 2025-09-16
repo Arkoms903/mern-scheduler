@@ -23,7 +23,7 @@ export const getPrograms = async (req, res) => {
 
 export const getProgramById = async (req, res) => {
   try {
-    const program = await Program.find(req.params.id);
+    const program = await Program.find(req.params.id).populate('university');
     res.status(200).json(program);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -33,7 +33,7 @@ export const getProgramById = async (req, res) => {
 //UPDATE
 export const updateProgram = async (req, res) => {
   try {
-    const newProgram = await Subject.findByIdAndUpdate(
+    const newProgram = await Program.findByIdAndUpdate(
       req.params.id,
       req.body,
       { new: true }
@@ -48,7 +48,7 @@ export const updateProgram = async (req, res) => {
 export const deleteProgram = async (req, res) => {
   try {
     const program = await Program.findByIdAndDelete(req.params.id);
-    if (!program) return res.status(404).json({ message: "Subject not found" });
+    if (!program) return res.status(404).json({ message: "Program not found" });
     res.json({ message: "Program deleted successfully" });
   } catch (error) {
     res.status(500).json({ message: error.message });

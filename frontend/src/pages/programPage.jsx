@@ -31,7 +31,7 @@ export default function Programs() {
   };
 
   const handleDelete = async (id) => {
-    await axios.delete(`/api/programs/${id}`);
+    await axios.delete(`${import.meta.env.VITE_BASE_URL}/api/v1/programs/${id}`);
     fetchPrograms();
   };
 

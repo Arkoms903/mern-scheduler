@@ -15,12 +15,12 @@ import Programs from '@/pages/programPage';
 function App() {
   return (
     <BrowserRouter>
-      <div className="min-h-screen flex flex-col bg-background text-foreground">
+      <div className="min-h-screen  flex flex-col bg-background text-foreground">
         {/* Navbar at the top */}
         <Navbar />
 
         {/* Main content area */}
-        <div className="flex flex-1">
+        <div className="flex flex-1 h-screen w-full">
           {/* Sidebar on the left */}
           <Sidebar />
 
@@ -31,6 +31,7 @@ function App() {
               <Routes>
                 <Route path="/" element={<h1 className="text-2xl font-bold">Welcome to Admin Dashboard</h1>} />
                 <Route path="/programs" element={<Programs />} />
+                
               </Routes>
             </main>
           </div>
