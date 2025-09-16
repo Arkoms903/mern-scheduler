@@ -14,8 +14,8 @@ export const createProgram = async (req, res) => {
 //GET
 export const getPrograms = async (req, res) => {
   try {
-    const programs = await Program.find();
-    res.status(200).json(subjects);
+    const programs = await Program.find().populate('university');
+    res.status(200).json(programs);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }

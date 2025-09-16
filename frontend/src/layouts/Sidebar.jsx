@@ -1,40 +1,39 @@
-'use client';
+import { NavLink } from 'react-router-dom';
+import { BookOpen, Users, FileText, UserCheck } from 'lucide-react';
 
-import { Button } from '@/components/ui/button';
-import { GraduationCap, Settings, BookOpen } from 'lucide-react';
-
-export default function Sidebar({ activeSection, onSectionChange }) {
-  const menuItems = [
-    { id: 'programs', label: 'Programs', icon: GraduationCap },
-    { id: 'classSettings', label: 'Class Settings', icon: Settings },
+export default function Sidebar({ active }) {
+  const items = [
+    { name: 'Universities', icon: BookOpen, path: '/universities' },
+    { name: 'Programs', icon: Users, path: '/programs' },
+    { name: 'Streams', icon: FileText, path: '/streams' },
+    { name: 'Sections', icon: UserCheck, path: '/sections' },
+    { name: 'Subjects', icon: BookOpen, path: '/subjects' },
+    { name: 'Class Settings', icon: FileText, path: '/class-settings' },
   ];
 
   return (
-    <div className="w-64 bg-card border-r border-border flex flex-col">
-      <div className="p-6 border-b border-border">
-        <div className="flex items-center gap-2">
-          <BookOpen className="h-8 w-8 text-primary" />
-          <h1 className="text-xl font-bold text-foreground">Admin Panel</h1>
-        </div>
+    <div className="w-64 h-screen bg-gray-50 border-r border-gray-200 flex flex-col">
+      <div className="p-4 text-xl font-bold flex items-center gap-2">
+        <BookOpen className="w-6 h-6 text-emerald-600" />
+        Admin Panel
       </div>
-
-      <nav className="flex-1 p-4">
-        <div className="space-y-2">
-          {menuItems.map((item) => {
-            const Icon = item.icon;
-            return (
-              <Button
-                key={item.id}
-                variant={activeSection === item.id ? 'default' : 'ghost'}
-                className="w-full justify-start gap-3"
-                onClick={() => onSectionChange(item.id)}
-              >
-                <Icon className="h-4 w-4" />
-                {item.label}
-              </Button>
-            );
-          })}
-        </div>
+      <nav className="mt-6 flex flex-col gap-1">
+        {items.map((item) => (
+          <NavLink
+            key={item.name}
+            to={item.path}
+            className={({ isActive }) =>
+              `flex items-center gap-3 px-4 py-2 rounded-md transition ${
+                isActive ? 'bg-emerald-600 text-white' : 'text-gray-600 hover:bg-gray-100'
+              }`
+            }
+          >
+            <item.icon
+              className={`w-5 h-5 ${active === item.name ? 'text-white' : 'text-gray-600'}`}
+            />
+            {item.name}
+          </NavLink>
+        ))}
       </nav>
     </div>
   );

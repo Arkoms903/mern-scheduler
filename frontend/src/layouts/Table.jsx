@@ -1,0 +1,62 @@
+import { Button } from '@/components/ui/button';
+
+export default function Table({ columns, data, onEdit, onDelete }) {
+  // Ensure data is always an array
+  const tableData = Array.isArray(data) ? data : [];
+
+  return (
+    <table className="w-full table-auto border border-gray-200">
+      <thead className="bg-gray-100">
+        <tr>
+          {columns.map((col) => (
+            <th key={col} className="px-4 py-2 text-left">
+              {col}
+            </th>
+          ))}
+          <th className="px-4 py-2">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableData.length === 0 ? (
+          <tr>
+            <td
+              colSpan={columns.length + 1}
+              className="text-center px-4 py-6 text-gray-500"
+            >
+              No data available
+            </td>
+          </tr>
+        ) : (
+          tableData.map((row) => (
+            <tr key={row._id || Math.random()} className="border-t">
+              {columns.map((col) => {
+                const value = row[col.toLowerCase()];
+                const displayValue =
+                  value && typeof value === 'object'
+                    ? value.name || JSON.stringify(value)
+                    : value || 'N/A';
+                return (
+                  <td key={col} className="px-4 py-2">
+                    {displayValue}
+                  </td>
+                );
+              })}
+              <td className="px-4 py-2 flex gap-2">
+                <Button size="sm" variant="outline" onClick={() => onEdit(row)}>
+                  Edit
+                </Button>
+                <Button
+                  size="sm"
+                  variant="destructive"
+                  onClick={() => onDelete(row._id)}
+                >
+                  Delete
+                </Button>
+              </td>
+            </tr>
+          ))
+        )}
+      </tbody>
+    </table>
+  );
+}

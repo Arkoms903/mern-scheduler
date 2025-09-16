@@ -9,20 +9,21 @@ import streamRoutes from "./routes/admin/stream.route.js";
 import classSettingsRoutes from "./routes/admin/classSettings.route.js";
 import universityRoutes from "./routes/admin/university.route.js";
 import authroutes from "./routes/auth/auth.routes.js"
-
+import cors from 'cors'
 dotenv.config();
 connectDB();
 
 const app = express();
+app.use(cors())
 app.use(express.json());
 
 // Mount routes
 app.use("/api/v1/subjects", subjectRoutes);
-app.use("/api/v1/subjects", programRoutes);
-app.use("/api/v1/subjects", sectionRoutes);
-app.use("/api/v1/subjects", streamRoutes);
-app.use("/api/v1/subjects", classSettingsRoutes);
-app.use("/api/v1/subjects", universityRoutes);
+app.use("/api/v1/programs", programRoutes);
+app.use("/api/v1/sections", sectionRoutes);
+app.use("/api/v1/streams", streamRoutes);
+app.use("/api/v1/classSettings", classSettingsRoutes);
+app.use("/api/v1/universiy", universityRoutes);
 app.use("/api/v1/auth",authroutes);
 
 const PORT = process.env.PORT;
