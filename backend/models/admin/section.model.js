@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const sectionSchema = new mongoose.Schema(
   {
-    stream: { type: mongoose.Schema.Types.ObjectId, required: true },
+    stream: { type: mongoose.Schema.Types.ObjectId,ref:"Stream",required: true },
     year: { type: Number, required: true },
     semester: { type: Number, required: true },
     name: { type: String, required: true },

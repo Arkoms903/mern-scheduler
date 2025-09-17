@@ -12,7 +12,7 @@ export const createSection = async (req, res) => {
 
 export const getSections = async (req, res) => {
   try {
-    const sections = await Section.find();
+    const sections = await Section.find().populate('stream');
     res.json(sections);
   } catch (error) {
     res.status(500).json({ message: error.message });

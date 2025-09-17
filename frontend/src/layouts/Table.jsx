@@ -1,8 +1,26 @@
 import { Button } from '@/components/ui/button';
 
 export default function Table({ columns, data, onEdit, onDelete }) {
-  // Ensure data is always an array
+   
   const tableData = Array.isArray(data) ? data : [];
+
+  const columnKeyMap = {
+    Name: 'name',
+    Program: 'program',
+    'Student Intake': 'studentIntake',
+    'Number of Sections': 'numberOfSections',
+    Year: 'year',
+    Semester: 'semester',
+    'Total Students': 'totalStudents',
+    Stream: 'stream',
+    'Class Duration': 'class duration',
+    'Break Time': 'break time',
+    'Class Days': 'class days',
+    Code: 'code',
+    Type: 'type',
+    Credits: 'credits',
+    'Classes/Week': 'classes per week'
+  };
 
   return (
     <table className="w-full table-auto border border-gray-200">
@@ -18,7 +36,7 @@ export default function Table({ columns, data, onEdit, onDelete }) {
       </thead>
       <tbody>
         {tableData.length === 0 ? (
-          <tr className='text-left'>
+          <tr className="text-left">
             <td
               colSpan={columns.length + 1}
               className="text-center px-5 py-4 text-gray-500"
@@ -30,11 +48,13 @@ export default function Table({ columns, data, onEdit, onDelete }) {
           tableData.map((row) => (
             <tr key={row._id || Math.random()} className="border-t">
               {columns.map((col) => {
-                const value = row[col.toLowerCase()];
+                const fieldKey = columnKeyMap[col] || col.toLowerCase();
+                const value = row[fieldKey];
                 const displayValue =
                   value && typeof value === 'object'
                     ? value.name || JSON.stringify(value)
-                    : value || 'N/A';
+                    : value ?? 'N/A';
+
                 return (
                   <td key={col} className="px-5 py-4">
                     {displayValue}

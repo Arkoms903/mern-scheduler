@@ -14,7 +14,7 @@ export const createSubject = async (req, res) => {
 //GET
 export const getSubjects = async (req, res) => {
   try {
-    const subjects = await Subject.find();
+    const subjects = await Subject.find().populate('stream');
     res.status(200).json(subjects);
   } catch (error) {
     res.status(500).json({ message: error.message });

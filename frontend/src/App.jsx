@@ -5,8 +5,12 @@ import Sidebar from '@/layouts/Sidebar';
 import Topbar from '@/layouts/Topbar';
 
 // Import your pages
-//import Universities from '@/pages/Universities';
-import Programs from '@/pages/programPage';
+import Universities from './pages/Universities';
+import Programs from './pages/programPage';
+import Streams from './pages/Streams';
+import Sections from './pages/Sections';
+import Subjects from './pages/Subjects';
+import ClassSettings from './pages/ClassSettings';
 //import Streams from './pages/Streams';
 //import Sections from './pages/Sections';
 //import Subjects from './pages/Subjects';
@@ -30,8 +34,12 @@ function App() {
             <main className="p-6 flex-1 overflow-auto">
               <Routes>
                 <Route path="/" element={<h1 className="text-2xl font-bold">Welcome to Admin Dashboard</h1>} />
+                <Route path="/universities" element={<Universities />} />
                 <Route path="/programs" element={<Programs />} />
-                
+                <Route path="/streams" element={<Streams/>} />
+                <Route path="/sections" element={<Sections/>} />
+                <Route path="/subjects" element={<Subjects/>} />
+                <Route path="/class-settings" element={<ClassSettings/>} />
               </Routes>
             </main>
           </div>

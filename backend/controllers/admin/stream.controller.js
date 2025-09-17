@@ -12,8 +12,8 @@ export const createStream = async (req, res) => {
 
 export const getStreams = async (req, res) => {
   try {
-    const streams = await Stream.find();
-    res.json(models);
+    const streams = await Stream.find().populate('program');
+    res.json(streams);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
@@ -41,7 +41,7 @@ export const updateStream = async (req, res) => {
 
 export const deleteStream = async (req, res) => {
   try {
-    const stream = awaitStream.findByIdAndDelete(req.params.id);
+    const stream = await Stream.findByIdAndDelete(req.params.id);
     if (!stream) return res.status(404).json({ message: "Not found" });
     res.json({ message: "Deleted successfully" });
   } catch (error) {
