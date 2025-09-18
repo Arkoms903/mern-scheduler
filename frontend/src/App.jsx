@@ -11,6 +11,7 @@ import Streams from './pages/Streams';
 import Sections from './pages/Sections';
 import Subjects from './pages/Subjects';
 import ClassSettings from './pages/ClassSettings';
+import Timetable from './pages/Timetable';
 //import Streams from './pages/Streams';
 //import Sections from './pages/Sections';
 //import Subjects from './pages/Subjects';
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/sections" element={<Sections/>} />
                 <Route path="/subjects" element={<Subjects/>} />
                 <Route path="/class-settings" element={<ClassSettings/>} />
+                <Route path="/timetable" element={<Timetable/>} />
               </Routes>
             </main>
           </div>

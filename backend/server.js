@@ -8,6 +8,7 @@ import sectionRoutes from "./routes/admin/section.route.js";
 import streamRoutes from "./routes/admin/stream.route.js";
 import classSettingsRoutes from "./routes/admin/classSettings.route.js";
 import universityRoutes from "./routes/admin/university.route.js";
+import timetableRoutes from "./routes/admin/timetable.route.js";
 import authroutes from "./routes/auth/auth.routes.js"
 import cors from 'cors'
 dotenv.config();
@@ -25,6 +26,7 @@ app.use("/api/v1/streams", streamRoutes);
 app.use("/api/v1/classSettings", classSettingsRoutes);
 app.use("/api/v1/university", universityRoutes);
 app.use("/api/v1/auth",authroutes);
+app.use("/api/v1/timetable", timetableRoutes);
 
 const PORT = process.env.PORT;
 app.listen(PORT, () => console.log(`✅Server running on port ${PORT}`));
